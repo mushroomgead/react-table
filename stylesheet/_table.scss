@@ -1,0 +1,29 @@
+.table {
+  width: 100%;
+  border: 1px solid #e6e6e6;
+  text-align: center;
+  border-collapse: collapse;
+  tr {
+    height: 40px;
+    color: #424242;
+    th {
+      border-bottom: 1px solid #e6e6e6;
+    }
+    th:not(:last-child) {
+      border-right: 1px solid #e6e6e6;
+    }
+  }
+  tbody tr:hover{
+    background: #e6e6e6;
+    cursor: pointer;
+  }
+  tbody tr td {
+    padding: 0;
+  }
+  td:not(:last-child) {
+    border-right: 1px solid #e6e6e6;
+  }
+  tr:not(:last-child) {
+    border-bottom: 1px solid #e6e6e6;
+  }
+}

@@ -1,16 +1,16 @@
-import React from 'react';
-import Pagination from './Pagination.jsx';
-import TestDataTable from './TestDataTable.jsx';
+import React from 'react'
+import Pagination from './Pagination.jsx'
+import Example from './Example.jsx'
 
 class App extends React.Component {
   render() {
     return (
       <div>
         <Pagination />
-        <TestDataTable />
+        <Example />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

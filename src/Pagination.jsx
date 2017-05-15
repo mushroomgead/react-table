@@ -8,7 +8,7 @@ class Pagination extends React.Component {
       <div className="pagination">
         <div className="left">
           <select>
-            <option>FILTER BAR</option>
+            <option disabled>FILTER BAR: </option>
             <option>Header1</option>
             <option>Header2</option>
             <option>Header3</option>
@@ -18,6 +18,7 @@ class Pagination extends React.Component {
         <div className="right">
           <div className="page-name">
             <select>
+              <option disabled>rows: </option>
               <option>1 - 10</option>
               <option>11 - 20</option>
               <option>21 - 30</option>

@@ -58,16 +58,14 @@ class DataTable extends React.Component {
     const { header, rows } = this.props
     const tbody = this.generateBody(header, rows, this.state.sorting)
     return (
-      <div>
-        <table className="table">
-          <thead>
-            {this.generateHeader(header, rows)}
-          </thead>
-          <tbody>
-            {tbody}
-          </tbody>
-        </table>
-      </div>
+      <table className="table">
+        <thead>
+          {this.generateHeader(header, rows)}
+        </thead>
+        <tbody>
+          {tbody}
+        </tbody>
+      </table>
     )
   }
 }

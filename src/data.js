@@ -1,3 +1,4 @@
+/* eslint-disable */
 export const header = [
   { key: 'id', value: 'id' },
   { key: 'first_name', value: 'first name' },
@@ -699,11 +700,4 @@ export const rows = [{
   "email": "cjiggen2q@washington.edu",
   "gender": "Female",
   "ip_address": "15.48.217.37"
-}, {
-  "id": 100,
-  "first_name": "Carlye",
-  "last_name": "Dawtry",
-  "email": "cdawtry2r@nps.gov",
-  "gender": "Female",
-  "ip_address": "80.207.7.31"
 }];

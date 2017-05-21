@@ -1,9 +1,12 @@
 import React from 'react'
 import propTypes from 'prop-types'
+import Filter from './Filter.jsx'
+import Pagination from './Pagination.jsx'
+import DataTable from './DataTable.jsx'
 import SortDown from '../assets/SortDown.png'
 import Sortup from '../assets/Sortup.png'
 
-class DataTable extends React.Component {
+class Table extends React.Component {
   constructor(props) {
     super(props)
 
@@ -12,7 +15,6 @@ class DataTable extends React.Component {
       page: 1,
     }
   }
-
   generateHeader(header, rows) {
     let ThComponent = []
 
@@ -27,7 +29,9 @@ class DataTable extends React.Component {
       <tr>{ ThComponent }</tr>
     )
   }
-
+  getCurrentPage(newpage) {
+    this.setState({ page: newpage })
+  }
   handleSorting(index, header, rows){
     const typeSort = this.state.sorting
     this.setState({ sorting: !this.state.sorting })
@@ -42,12 +46,13 @@ class DataTable extends React.Component {
     this.generateBody(header, newRow, this.state.sorting)
   }
 
-  generateBody(header, rows) {
+  generateBody(header, rows, sort, page) {
+    let recPerPage = 10
     if (rows.length !== 0) {
       return rows.map((itemList, i) => {
-        // let recStart = recPerPage * (page - 1) + 1
-        // let recEnd = recPerPage * page
-        if (i >= 0 && i <= 9){
+        let recStart = recPerPage * (page - 1)
+        let recEnd = (recPerPage * page) - 1
+        if (i >= recStart && i <= recEnd){
           const rows = header.map((headerList, j) => {
             const value = itemList[headerList.key]
             return (<td key={j}>{value}</td>)
@@ -61,16 +66,23 @@ class DataTable extends React.Component {
   }
   render() {
     const { header, rows } = this.props
-    const tbody = this.generateBody(header, rows, this.state.sorting, this.state.page)
+    const { page } = this.state
+    const tbody = this.generateBody(header, rows, this.state.sorting, page)
     return (
-      <table className="table">
-        <thead>
-          { this.generateHeader(header, rows) }
-        </thead>
-        <tbody>
-          {tbody}
-        </tbody>
-      </table>
+      <div>
+        <div className="pagination">
+          <Filter />
+          <Pagination totalRecord={rows.length} recPerPage={10} onSelected={(page) => this.getCurrentPage(page)} />
+        </div>
+        <table className="table">
+          <thead>
+            { this.generateHeader(header, rows) }
+          </thead>
+          <tbody>
+            {tbody}
+          </tbody>
+        </table>
+      </div>
     )
   }
 }
@@ -80,4 +92,4 @@ DataTable.propTypes = {
   sorting: propTypes.string,
   fixHeader: propTypes.bool,
 }
-export default DataTable
+export default Table

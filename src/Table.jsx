@@ -34,8 +34,7 @@ class Table extends React.Component {
   }
   handleSorting(index, header, rows){
     const typeSort = this.state.sorting
-    this.setState({ sorting: !this.state.sorting })
-
+    this.setState({ sorting: !this.state.sorting, page: 1 })
     const newRow = rows.sort(function (x, y) {
       if(x[header[index].key] > y[header[index].key]) {
         return (typeSort) ? 1 : -1

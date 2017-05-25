@@ -4,7 +4,12 @@ import Backward from '../assets/Backward.png'
 import Forward from '../assets/Forward.png'
 
 class Pagination extends React.Component {
-
+  constructor() {
+    super()
+    this.state = {
+      page: 1
+    }
+  }
   genRecord() {
     let component = []
     const { totalRecord, recPerPage } = this.props
@@ -20,6 +25,21 @@ class Pagination extends React.Component {
   handleChange(e) {
     this.props.onSelected(e.target.value)
   }
+  handleBack() {
+    if(this.state.page > 1) {
+      let newPage = this.state.page - 1
+      this.setState({ page: newPage })
+    }
+    this.props.onSelected(this.state.page)
+  }
+  handleForward() {
+    let maxPage = Math.ceil(100/10)
+    if(this.state.page < maxPage) {
+      let newPage = this.state.page + 1
+      this.setState({ page: newPage })
+    }
+    this.props.onSelected(this.state.page)
+  }
   render() {
     return (
       <div className="right">
@@ -29,10 +49,10 @@ class Pagination extends React.Component {
             { this.genRecord() }
           </select> of {this.props.totalRecord}
         </div>
-        <div className="box box-shadow">
+        <div className="box box-shadow" onClick={() => this.handleBack()}>
           <img className="icon" src={Backward} />
         </div>
-        <div className="box box-shadow">
+        <div className="box box-shadow" onClick={() => this.handleForward()}>
           <img className="icon" src={Forward} />
         </div>
       </div>

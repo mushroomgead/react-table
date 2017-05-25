@@ -42,12 +42,12 @@ class DataTable extends React.Component {
     this.generateBody(header, newRow, this.state.sorting)
   }
 
-  generateBody(header, rows) {
+  generateBody(header, rows, sort, page) {
     if (rows.length !== 0) {
       return rows.map((itemList, i) => {
-        // let recStart = recPerPage * (page - 1) + 1
-        // let recEnd = recPerPage * page
-        if (i >= 0 && i <= 9){
+        let recStart = 10 * (page - 1) + 1
+        let recEnd = 10 * page
+        if (i >= recStart && i <= recEnd){
           const rows = header.map((headerList, j) => {
             const value = itemList[headerList.key]
             return (<td key={j}>{value}</td>)

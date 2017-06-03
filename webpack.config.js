@@ -1,5 +1,5 @@
-const webpack = require('webpack')
-const path = require('path')
+// const webpack = require('webpack')
+// const path = require('path')
 
 module.exports = {
   entry: {
@@ -22,11 +22,11 @@ module.exports = {
       test: /\.scss$/,
       exclude: /(node_modules)/,
       use: [{
-        loader: 'style-loader',
-      },{
-        loader: 'css-loader',
-      },{
-        loader: 'sass-loader',
+        loader: 'style-loader'
+      }, {
+        loader: 'css-loader'
+      }, {
+        loader: 'sass-loader'
       }]
     }, {
       test: /\.png$/,
